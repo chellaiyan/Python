@@ -1,0 +1,35 @@
+import pandas as pd
+
+def validate_dataframe(df):
+    # Check if DataFrame is empty
+    if df.empty:
+        print("DataFrame is empty")
+        return False
+    
+    # Check for missing values
+    if df.isnull().values.any():
+        print("DataFrame contains missing values")
+        return False
+    
+    # Check for duplicate rows
+    if df.duplicated().any():
+        print("DataFrame contains duplicate rows")
+        return False
+    
+    # Add more validation checks as per your requirements
+    
+    # If all validation checks pass
+    return True
+
+
+# Example usage
+data = {'Name': ['John', 'Emma', 'John', 'Alex'],
+        'Age': [25, 30, 25, 35],
+        'City': ['New York', 'Paris', 'New York', 'London']}
+
+df = pd.DataFrame(data)
+
+if validate_dataframe(df):
+    print("DataFrame is valid")
+else:
+    print("DataFrame is invalid")
